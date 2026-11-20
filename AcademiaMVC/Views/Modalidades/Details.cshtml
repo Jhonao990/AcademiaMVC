@@ -1,0 +1,10 @@
+
+@model Modalidade
+@{ ViewData["Title"] = "Detalhes da modalidade"; }
+<a asp-action="Index" class="text-decoration-none">← Voltar às modalidades</a>
+<div class="row g-4 mt-2">
+ <div class="col-lg-6">@if (!string.IsNullOrWhiteSpace(Model.ImagemUrl)) { <img src="@Model.ImagemUrl" class="img-fluid rounded-4" alt="@Model.Nome" /> }</div>
+ <div class="col-lg-6"><span class="eyebrow">MODALIDADE</span><h1 class="page-title">@Model.Nome</h1><p class="lead">@Model.Descricao</p><p><strong>Horário:</strong> @Model.Horario</p><p><strong>Vagas máximas:</strong> @Model.LimiteVagas</p><p><strong>Mensalidade:</strong> R$ @Model.PrecoMensal.ToString("N2")</p><p><strong>Status:</strong> @(Model.Ativa ? "Ativa" : "Inativa")</p>
+ @if (User.Identity?.IsAuthenticated == true && Model.Ativa) { <form asp-controller="Matriculas" asp-action="Solicitar" method="post"><input type="hidden" name="modalidadeId" value="@Model.Id" /><button class="btn btn-lime">Solicitar matrícula</button></form> }
+ </div>
+</div>

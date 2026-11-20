@@ -1,0 +1,8 @@
+
+@model IEnumerable<Matricula>
+@{ ViewData["Title"] = "Minhas matrículas"; }
+<h1 class="page-title mb-4">Minhas matrículas</h1>
+<div class="table-responsive"><table class="table table-hover align-middle"><thead><tr><th>Modalidade</th><th>Data</th><th>Mensalidade</th><th>Status</th><th></th></tr></thead><tbody>
+@foreach(var m in Model) { <tr><td>@m.Modalidade?.Nome</td><td>@m.DataMatricula.ToString("dd/MM/yyyy")</td><td>R$ @m.ValorMensal.ToString("N2")</td><td><span class="badge @(m.Status == "Ativa" ? "text-bg-success" : "text-bg-secondary")">@m.Status</span></td><td>@if(m.Status == "Ativa") { <form asp-action="Cancelar" method="post"><input type="hidden" name="id" value="@m.Id" /><button class="btn btn-sm btn-outline-danger">Cancelar</button></form> }</td></tr> }
+</tbody></table></div>
+@if (!Model.Any()) { <p class="text-secondary">Você ainda não possui matrículas. <a asp-controller="Modalidades" asp-action="Index">Ver modalidades</a>.</p> }

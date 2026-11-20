@@ -1,0 +1,6 @@
+
+@model Aluno
+@{ ViewData["Title"] = "Detalhes do aluno"; }
+<div class="form-panel"><h1 class="page-title">@Model.Nome</h1><p><strong>E-mail:</strong> @Model.Email</p><p><strong>Telefone:</strong> @Model.Telefone</p><p><strong>Nascimento:</strong> @Model.DataNascimento?.ToString("dd/MM/yyyy")</p><h3 class="h5 mt-4">Histórico de matrículas</h3>
+@if (Model.Matriculas.Any()) { <ul>@foreach(var m in Model.Matriculas) { <li>@m.Modalidade?.Nome — @m.Status</li> }</ul> } else { <p class="text-secondary">Sem matrículas registradas.</p> }
+<a asp-action="Index" class="btn btn-outline-secondary">Voltar</a></div>

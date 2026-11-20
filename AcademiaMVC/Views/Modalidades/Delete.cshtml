@@ -1,0 +1,3 @@
+@model Modalidade
+@{ ViewData["Title"] = "Excluir modalidade"; }
+<div class="form-panel"><h1 class="page-title">Excluir modalidade</h1><p>Confirma a exclusão de <strong>@Model.Nome</strong>?</p><p class="text-danger">Modalidades com matrículas não podem ser excluídas.</p><form asp-action="Delete"><input type="hidden" asp-for="Id" /><button class="btn btn-danger">Confirmar exclusão</button> <a asp-action="Index" class="btn btn-outline-secondary">Cancelar</a></form></div>

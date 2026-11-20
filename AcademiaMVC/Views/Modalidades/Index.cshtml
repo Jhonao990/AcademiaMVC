@@ -1,0 +1,36 @@
+
+@model IEnumerable<Modalidade>
+@{ ViewData["Title"] = "Modalidades"; }
+<div class="d-flex justify-content-between align-items-center flex-wrap gap-3 mb-4">
+ <div><span class="eyebrow">CONHEÇA AS OPÇÕES</span><h1 class="page-title">Modalidades</h1></div>
+ @if (User.IsInRole("Admin")) { <a class="btn btn-lime" asp-action="Create">+ Nova modalidade</a> }
+</div>
+<form method="get" class="row g-2 mb-4">
+ <div class="col-md-5"><input name="busca" value="@ViewBag.Busca" class="form-control" placeholder="Buscar modalidade..." /></div>
+ <div class="col-auto"><button class="btn btn-dark">Buscar</button></div>
+ <div class="col-auto"><a class="btn btn-outline-secondary" asp-action="Index">Limpar</a></div>
+</form>
+<div class="row g-4">
+@foreach (var item in Model)
+{
+ <div class="col-md-6 col-lg-4">
+  <div class="card modality-card h-100">
+   @if (!string.IsNullOrWhiteSpace(item.ImagemUrl)) { <img src="@item.ImagemUrl" class="card-img-top modality-img" alt="@item.Nome" /> }
+   <div class="card-body d-flex flex-column">
+    <div class="d-flex justify-content-between"><span class="badge @(item.Ativa ? "text-bg-success" : "text-bg-secondary")">@(item.Ativa ? "Disponível" : "Indisponível")</span><span class="fw-bold">R$ @item.PrecoMensal.ToString("N2")/mês</span></div>
+    <h3 class="h4 mt-3">@item.Nome</h3><p class="text-secondary">@item.Descricao</p>
+    <p class="small mb-1">◷ @item.Horario</p><p class="small">♙ Limite de @item.LimiteVagas vagas</p>
+    <div class="mt-auto d-flex flex-wrap gap-2">
+     <a class="btn btn-outline-dark btn-sm" asp-action="Details" asp-route-id="@item.Id">Ver detalhes</a>
+     @if (User.Identity?.IsAuthenticated == true && item.Ativa)
+     {
+      <form asp-controller="Matriculas" asp-action="Solicitar" method="post"><input type="hidden" name="modalidadeId" value="@item.Id" /><button class="btn btn-dark btn-sm" type="submit">Matricular-se</button></form>
+     }
+     @if (User.IsInRole("Admin")) { <a class="btn btn-outline-secondary btn-sm" asp-action="Edit" asp-route-id="@item.Id">Editar</a><a class="btn btn-outline-danger btn-sm" asp-action="Delete" asp-route-id="@item.Id">Excluir</a> }
+    </div>
+   </div>
+  </div>
+ </div>
+}
+</div>
+@if (!Model.Any()) { <p class="text-secondary">Nenhuma modalidade encontrada.</p> }

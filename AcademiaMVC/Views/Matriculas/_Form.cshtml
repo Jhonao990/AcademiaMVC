@@ -1,0 +1,7 @@
+
+@model Matricula
+<div asp-validation-summary="All" class="text-danger"></div>
+<div class="mb-3"><label asp-for="AlunoId" class="form-label"></label><select asp-for="AlunoId" asp-items="ViewBag.AlunoId" class="form-select"><option value="">Selecione o aluno</option></select><span asp-validation-for="AlunoId" class="text-danger"></span></div>
+<div class="mb-3"><label asp-for="ModalidadeId" class="form-label"></label><select asp-for="ModalidadeId" asp-items="ViewBag.ModalidadeId" class="form-select"><option value="">Selecione a modalidade</option></select><span asp-validation-for="ModalidadeId" class="text-danger"></span></div>
+<div class="mb-3"><label asp-for="DataMatricula" class="form-label"></label><input asp-for="DataMatricula" class="form-control" /><span asp-validation-for="DataMatricula" class="text-danger"></span></div>
+<div class="mb-3"><label asp-for="Status" class="form-label"></label><select asp-for="Status" class="form-select"><option>Ativa</option><option>Cancelada</option></select></div>

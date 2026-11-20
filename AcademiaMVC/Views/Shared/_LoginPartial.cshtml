@@ -1,0 +1,17 @@
+@using Microsoft.AspNetCore.Identity
+@if (User.Identity?.IsAuthenticated == true)
+{
+ <div class="d-flex align-items-center gap-2 text-light">
+  <span class="small">@User.Identity.Name</span>
+  <form asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="/" method="post">
+   <button type="submit" class="btn btn-sm btn-outline-light">Sair</button>
+  </form>
+ </div>
+}
+else
+{
+ <div class="d-flex gap-2">
+  <a class="btn btn-sm btn-outline-light" asp-area="Identity" asp-page="/Account/Login">Entrar</a>
+  <a class="btn btn-sm btn-lime" asp-area="Identity" asp-page="/Account/Register">Criar conta</a>
+ </div>
+}

@@ -1,0 +1,15 @@
+:root{--ink:#15191b;--lime:#c8f36b;--muted:#727b80;--line:#e5e8e8}
+body{background:#f6f7f5;color:var(--ink);font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif}
+.navbar-brand{letter-spacing:.08em}.brand-mark{color:var(--lime);font-weight:900}
+.btn-lime{background:var(--lime);border-color:var(--lime);color:#15191b;font-weight:700}.btn-lime:hover{background:#b6e45a;border-color:#b6e45a;color:#15191b}
+.hero{background:#15191b;color:#fff;overflow:hidden}.hero .lead{max-width:560px}.hero-img{max-height:360px;width:100%;object-fit:cover;filter:saturate(.8)}
+.eyebrow{font-size:.75rem;letter-spacing:.16em;font-weight:800;color:#6d8d2c}
+.page-title{font-size:clamp(2rem,4vw,3rem);font-weight:800;letter-spacing:-.04em;margin:.25rem 0 1rem}
+.info-card,.form-panel{background:#fff;border:1px solid var(--line);border-radius:1rem;padding:1.5rem;height:100%;box-shadow:0 8px 24px rgba(15,25,20,.035)}
+.info-number{font-size:.8rem;color:#71942e;font-weight:900;letter-spacing:.1em;margin-bottom:1rem}
+.modality-card{border:1px solid var(--line);border-radius:1rem;overflow:hidden;box-shadow:0 8px 24px rgba(15,25,20,.04)}
+.modality-img{height:205px;object-fit:cover}.card-body{padding:1.25rem}
+.form-control,.form-select{padding:.7rem .85rem;border-color:#d8dddd}
+.form-control:focus,.form-select:focus{border-color:#9fc94a;box-shadow:0 0 0 .2rem rgba(200,243,107,.25)}
+.table{background:#fff}.table thead th{background:#eef0ed;font-size:.82rem;text-transform:uppercase;letter-spacing:.04em}
+footer{color:var(--muted);font-size:.9rem}
